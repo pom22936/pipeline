@@ -4,8 +4,6 @@ pipeline {
     stage('step1') {
       steps {
         echo '$PERSON'
-        sh '''PERSON = \'palm\'
-echo "$PERSON"'''
       }
     }
   }
