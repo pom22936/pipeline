@@ -515,31 +515,5 @@ pipeline {
                 }
             }
         }
-        stage('Step16'){
-            steps {
-                node('master') {
-                    script {
-                        echo "Stap16 path window"
-                        build job: 'Check_input_files_windows', parameters: [string(name: 'Path_folder', value: "$path_input_windows"), string(name: 'file_input', value: "$input_file_window")]
-                        build job: 'Execute_sas_windows', parameters: [string(name: 'folder_sas', value: 'C:\\Users\\Admin\\Documents\\scb\\Linux\\script'), string(name: 'path_output_folder', value: 'C:\\Users\\Admin\\Documents\\output'), string(name: 'Filename', value: "$gen_filename"), string(name: 'time', value: "$time_dalay"), string(name: 'status', value: "$status"), string(name: 'is_generate_file', value: "$is_gen_file")]
-                        ch_log_win = build(job: 'Analyze log files at windows', parameters: [string(name: 'Path_folder', value: 'C:\\Users\\Admin\\Documents\\scb\\Linux\\Logs'), string(name: 'Check_File', value: 'EDC_Merchant.log'), string(name: 'ERROE_STR', value: "$ERROR")], propagate: false, quietPeriod: 3, wait: true).result
-                        if (ch_log_win == "SUCCESS") {
-                            error 'Failed, exiting now...'
-                        }
-                    }
-                }
-                node("$node_linux") {
-                    script {
-                        echo "Stap16 path linux"
-                        def check = fileExists("/home/birdmodify/testing/output/test_output01.txt") 
-                        if (check) {
-                            echo "Succress"
-                        } else {
-                            error 'Failed, exiting now...'
-                        }
-                    }
-                }
-            }
-        }
     }
 }
