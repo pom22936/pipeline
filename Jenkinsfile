@@ -5,7 +5,7 @@ pipeline {
     string(name: 'input_file_linux', defaultValue: 'test_input01.txt', description: '')
     string(name: 'path_input_linux', defaultValue: '/home/birdmodify/testing/input/', description: '')
     string(name: 'input_file_window', defaultValue: 'pipeline_palm.txt', description: '')
-    string(name: 'path_input_windows', defaultValue: "C:/Users/Admin/Documents/output", description: '')
+    string(name: 'path_input_windows', defaultValue: "C:\\Users\\Admin\\Documents\\output", description: '')
     string(name: 'ERROR', defaultValue: 'ERROR1', description: '')
     string(name: 'gen_filename', defaultValue: 'test_wrap.txt', description: '')
     string(name: 'time_dalay', defaultValue: '3', description: '')
